@@ -12,6 +12,8 @@
 
         <%# } %>
     </h1> -->
+    <a href="/surveys/create" class="btn btn-primary" role="button">
+        <i class="fas fa-plus-circle"></i> Add a Survey!</a>
     <div class="row">
         <div class="col">
             <table class="table table-striped table-bordered table-hover">
@@ -24,6 +26,7 @@
                        <th scope="col" class="text-center col-1">Created (yyyy-mm-dd)</th>
                        <th scope="col" class="text-center col-1">Active on (yyyy-mm-dd)</th>
                        <th scope="col" class="text-center col-1">Expiring on (yyyy-mm-dd)</th>
+                       <th></th>
                        <th></th>
                        <th></th>
                        <th></th>
@@ -102,10 +105,10 @@
                         </td>
 
                         <%# } else if(!displayName && (new Date(surveys[count].active) > new Date())) { %>
-                        <td class="text-center col-1">
+                        <!-- <td class="text-center col-1">
                         <a href="javascript: void(0)"></i><button class="btn btn-success btn-sm surveyStart"><i class="fas fa-pencil-alt"></i> Start Survey!</button></a>
                         
-                        </td>
+                        </td> -->
                         <%# } else { %>
                         <td class="text-center col-1">
                             <a href="/surveys/view/<%= surveys[count]._id %>" class="btn btn-success btn-sm">
