@@ -1,7 +1,7 @@
 <h1>Get started by clicking the first button below!</h1>
 <button id="questionCreate">Add Question</button>
 <form id="createSurvey" method="POST">
-    <!-- <input type="hidden" name="displayName" value = "<%#displayName%>"> -->
+    <!-- <input type="hidden" name="displayName" value = "<%#displayName%>"> PLEASE UNCOMMENT ONCE SECURITY AUTHENICATION HAS BEEN ADDED -->
     <div class="form-group questionField" id="">
         <label for="nameTextField">Survey Title:</label>
         <input type="text" class="form-control"
@@ -35,7 +35,7 @@
 
         </div>
         <br>
-        <input id="optionList1" name="list1" type="text">
+        <input id="optionList1" name="list1" type="hidden">
     </div>
     <br><br>
     <div class="form-group questionField" id="questiontwoDiv">
@@ -49,7 +49,7 @@
             
         </div>
         <br>
-        <input id="optionList2" name="list2" type="text">
+        <input id="optionList2" name="list2" type="hidden">
     </div>
     <br><br>
     <div class="form-group questionField" id="questionthreeDiv">
