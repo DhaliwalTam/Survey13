@@ -1,104 +1,48 @@
-<h1>Get started by clicking the first button below!</h1>
-<button id="questionCreate">Add Question</button>
+<h1>Create your new survey by using the form below!</h1>
+<!-- <button id="questionCreate">Add Question</button> -->
 <form id="createSurvey" method="POST">
     <!-- <input type="hidden" name="displayName" value = "<%#displayName%>"> PLEASE UNCOMMENT ONCE SECURITY AUTHENICATION HAS BEEN ADDED -->
-    <div class="form-group questionField" id="">
+    <div class="form-group">
         <label for="nameTextField">Survey Title:</label>
         <input type="text" class="form-control"
-        id="nameTextField"
+        id="surveyTitle"
         placeholder="Enter survey title"
         name="title">
     </div>
 
-    <div class="form-group" id="">
+    <div class="form-group">
         <label for="nameTextField">Date of Activation:</label>
         <input type="date" class="form-control"
         id="active"
         name="activeDate">
     </div>
     
-    <div class="form-group" id="">
+    <div class="form-group">
         <label for="nameTextField">Date of Expiry:</label>
         <input type="date" class="form-control"
         id="expire"
         name="expiryDate">
     </div>
 
-    <div class="form-group questionField" id="questiononeDiv">
-        <label for="nameTextField">First Question:</label>
-        <input type="text" class="form-control"
-        id="nameTextField"
-        placeholder="Enter your first question"
-        name="ques1">
-        <button type="button" id="one" class="addOptions">Add New Option</button>
-        <div id="options1">
-
-        </div>
+    <div id="questionCreate">
+        <label>Enter your new question here:</label>
+        <input type="text" class="form-control" id="questionInput" placeholder="Enter question 1">
+        <div id="q"></div>
         <br>
-        <input id="optionList1" name="list1" type="hidden">
-    </div>
-    <br><br>
-    <div class="form-group questionField" id="questiontwoDiv">
-        <label for="nameTextField">Second Question:</label>
-        <input type="text" class="form-control"
-        id="nameTextField"
-        placeholder="Enter your first question"
-        name="ques2">
-        <button type="button" id="two" class="addOptions">Add New Option</button>
-        <div id="options2">
-            
-        </div>
+        <input type="text" id="optionInput" placeholder="Option for question 1">
+        <button type="button" id="addOptionButton" class="addOptions">Add Option</button>
+        <br><br>
+        <button type="button" id="saveQuestionandOptions">Save Question and Options</button>
+        <input type= "hidden" id="questionList" name="qList">
         <br>
-        <input id="optionList2" name="list2" type="hidden">
+        <input type="hidden" id="optionList" name="oList">
     </div>
-    <br><br>
-    <div class="form-group questionField" id="questionthreeDiv">
-        <label for="nameTextField">Third Question:</label>
-        <input type="text" class="form-control"
-        id="nameTextField"
-        placeholder="Enter your first question"
-        name="ques3">
-        <button type="button" id="three" class="addOptions">Add New Option</button>
-        <div id="options3">
-            
-        </div>
-        <br>
-        <input id="optionList3" name="list3" type="hidden">
-    </div>
-    <br><br>
-    <div class="form-group questionField" id="questionfourDiv">
-        <label for="nameTextField">Fourth Question:</label>
-        <input type="text" class="form-control"
-        id="nameTextField"
-        placeholder="Enter your first question"
-        name="ques4">
-        <button type="button" id="four" class="addOptions">Add New Option</button>
-        <div id="options4">
-            
-        </div>
-        <br>
-        <input id="optionList4" name="list4" type="hidden">
-    </div>
-    <br><br>
-    <div class="form-group questionField" id="questionfiveDiv">
-        <label for="nameTextField">Fifth Question:</label>
-        <input type="text" class="form-control"
-        id="nameTextField"
-        placeholder="Enter your first question"
-        name="ques5">
-        <button type="button" id="five" class="addOptions">Add New Option</button>
-        <div id="options5">
-            
-        </div>
-        <input id="optionList5" name="list5" type="hidden">
-        <br>
-    </div>
-    <button id="submitButton" class="btn btn-primary" type="submit">
-        <i class="fas fa-edit"></i> Save Survey</button>
-    
-        <a href="/surveys/list" class="btn btn-warning">
-            <i class="fas fa-undo"></i> Cancel</a>
-
 </form>
-<br><br><br>
+<br>
+<button id="submitButton" class="btn btn-primary" type="button">
+    <i class="fas fa-edit"></i> Publish Survey!</button>
+    
+    <a href="/surveys/list" class="btn btn-warning">
+        <i class="fas fa-undo"></i> Cancel</a>
+
 <script src="/content/scripts/create.js"></script>

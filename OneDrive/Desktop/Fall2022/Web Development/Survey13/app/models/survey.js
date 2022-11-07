@@ -7,8 +7,8 @@ const SurveySchema = new Schema({
     template: String, 
     title: String,
     createdOn: Date,
-    active: Date,
-    expiry: Date,
+    active: String,
+    expiry: String,
     questions: [String],
     options: []
 }, {
