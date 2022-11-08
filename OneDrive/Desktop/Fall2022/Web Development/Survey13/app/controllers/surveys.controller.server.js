@@ -1,5 +1,6 @@
 import responsesModel from '../models/responses.js'
 import surveyModel from '../models/survey.js';
+import nodemailer from "nodemailer";
 
 var today = new Date();
 
@@ -116,4 +117,109 @@ export function ProcessSurveyEditPage(req,res,next){
 
         res.redirect('/surveys/list');
     })
+}
+
+
+export function DisplaySurveyPage(req, res, next) {
+    let id = req.params.id;
+
+    surveyModel.findById(id, (err, survey) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+
+        res.render('index', {
+            title: 'Complete Survey',
+            page: 'surveys/view',
+            survey: survey,
+            //displayName: UserDisplayName(req)
+        });
+    });
+}
+
+
+export function ProcessSurveyPage(req, res, next) {
+    let newSubmission = responsesModel({
+        surveyID: req.body.surveyID,
+        surveyor: req.body.surveyorName,
+        surveyorEmail: req.body.surveyorEmail,
+        template: "Multiple Choice",
+        title: req.body.surveyTitle,
+        createdOn: req.body.createdOn,
+        expiry: req.body.expiringOn,
+        surveyAuthor: req.body.createdBy,
+        questions: [],
+        responses: []
+    })
+
+    for(var i = 0; i < req.body.ques.length; i++){
+        if(req.body.ques[i] !== "undefined"){
+            newSubmission.questions.push(req.body.ques[i]);
+        }
+
+        if(req.body.ques[i] == "undefined" || req.body.ques[i] == null ){
+            const index = newSubmission.questions.indexOf(req.body.ques[i]);
+            if (index > -1) {
+                newSubmission.questions.splice(index, 1);
+            }
+        }
+
+        if(req.body[`choices${i+1}`] !== ""){
+            newSubmission.responses.push(req.body[`choices${i+1}`]);
+        }
+
+        if(req.body[`choices${i+1}`] == "undefined" || req.body[`choices${i+1}`] == null){
+            const index = newSubmission.responses.indexOf(req.body[`choices${i+1}`]);
+            if (index > -1) {
+                newSubmission.responses.splice(index, 1);
+            }
+        }
+    }
+
+    responsesModel.create(newSubmission, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        };
+    })
+    
+    var transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'survey13agileteam@gmail.com',
+            pass: 'kurfjpzoroowxfda'
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
+
+    var mailOptions = {
+        from: 'survey13agileteam@gmail.com',
+        to: 'survey13agileteam@gmail.com',
+        subject: `Responses from survey completed by ${req.body.surveyorName}`,
+        text: `Survey Title: ${req.body.surveyTitle}\nSurveyor Name: ${req.body.surveyorName}\nSurveyor Email: ${req.body.surveyorEmail}\n\nQuestions: \n`
+    };
+
+    for(var i = 0;i < newSubmission.questions.length; i++){
+        mailOptions.text += `${i+1}. ${newSubmission.questions[i]}\n`;
+    }
+
+    for(var i = 0; i < newSubmission.responses.length; i++){
+        mailOptions.text += `Answer to question ${i+1}: ${newSubmission.responses[i]}\n`;
+    }
+
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+
+    res.redirect('/surveys/list');
 }
