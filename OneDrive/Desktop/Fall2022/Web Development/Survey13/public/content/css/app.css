@@ -6,15 +6,45 @@
 body {
     font-family: Verdana, Arial, sans-serif;
     background-image: linear-gradient(to right, orange 0%, skyblue 100%);
-    margin: 0;
-    padding: 10px;
 }
+
+
+/*------------------------------------------------------------------*/
 
 header {
     color: white;
-    background-color: #000000;
+    background-color: #000;
     padding: 18px 30px;
+    height: 90px;
 }
+
+
+/* survey13 logo */
+
+#header-logo {
+    width: 25%;
+    margin-top: -15px;
+    margin-left: -15px;
+}
+
+#header-left-link,
+.nav-link {
+    font-size: 25px;
+}
+
+
+/*header- home link*/
+
+.nav-link {
+    margin-top: -20px;
+}
+
+#header-home-effect:hover {
+    color: goldenrod;
+}
+
+
+/*--------------------------------*/
 
 tr:nth-child(even) {
     background-color: white;
@@ -35,7 +65,7 @@ img {
 
 .topnav {
     overflow: hidden;
-    background-color: #333;
+    background-color: grey;
 }
 
 .topnav a {
@@ -118,7 +148,10 @@ h2 {
 }
 
 
-/*Home*/
+/*--Survey-Home------------------------------------*/
+
+
+/*div in the landing page*/
 
 #home-survey-box {
     margin: 0 auto;
@@ -129,7 +162,7 @@ h2 {
     background-color: ghostwhite;
     margin-top: 30px;
     margin-bottom: 70px;
-    height: 400px;
+    height: 350px;
     clear: both;
 }
 
@@ -143,6 +176,9 @@ h2 {
     background-color: ghostwhite;
 }
 
+
+/*The link to the survey pages - view and list*/
+
 .home-survey-button {
     background-color: lightblue;
     float: left;
@@ -152,11 +188,10 @@ h2 {
     text-align: center;
     margin-top: 25px;
     margin-bottom: 4px;
-    margin-left: 30px;
+    margin-left: 50px;
     padding: 5px;
     width: 400px;
     height: 50px;
-    clear: both;
 }
 
 .home-survey-button a {
@@ -165,9 +200,71 @@ h2 {
 }
 
 .home-survey-button:hover {
-    background-color: darkblue;
+    background-image: linear-gradient(to right, #FF7777 0%, darkgoldenrod 100%);
+    box-shadow: 6px 3px 3px black;
 }
 
 .home-survey-button a:hover {
-    color: ghostwhite;
+    color: black;
 }
+
+
+/*-Survey Create--------------------------------------*/
+
+#survey-create-box {
+    margin: 0 auto;
+    width: 500px;
+    margin-bottom: 75px;
+}
+
+#survey-create-box h1 {
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+#survey-create-box input:hover {
+    border: solid 2px black;
+}
+
+#addOptionButton {
+    margin-top: 4px;
+}
+
+#saveQuestionandOptions,
+#addOptionButton {
+    border-radius: 5px;
+    padding: 3px;
+}
+
+#saveQuestionandOptions:hover,
+#addOptionButton:hover {
+    background-color: #95CD41;
+    box-shadow: 4px 2px 2px black;
+}
+
+#submitButton,
+#cancelBtn {
+    border: solid black 2px;
+}
+
+#submitButton:hover {
+    background-color: #16697A;
+    box-shadow: 4px 2px 2px black;
+}
+
+#cancelBtn:hover {
+    background-color: #BB0029;
+    box-shadow: 4px 2px 2px black;
+}
+
+
+/*-Survey Edit-----------------------------------------------*/
+
+
+/*-Survey List-----------------------------------------------*/
+
+
+/*-Survey Stats-----------------------------------------------*/
+
+
+/*-Survey View-----------------------------------------------*/
