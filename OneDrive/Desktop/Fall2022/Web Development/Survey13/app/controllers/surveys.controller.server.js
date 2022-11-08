@@ -153,6 +153,7 @@ export function ProcessSurveyPage(req, res, next) {
         responses: []
     })
 
+    
     for(var i = 0; i < req.body.ques.length; i++){
         if(req.body.ques[i] !== "undefined"){
             newSubmission.questions.push(req.body.ques[i]);
