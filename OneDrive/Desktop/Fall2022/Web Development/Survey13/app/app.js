@@ -25,7 +25,7 @@ let localStrategy = passportLocal.Strategy;
 import User from './models/user.js';
 
 //Import Routes
-//import indexRouter from './routes/index.route.server.js'
+import indexRouter from './routes/index.route.server.js'
 import surveysRouter from './routes/surveys.route.server.js'
 //import authRouter from './routes/auth.route.server.js';
 
@@ -85,7 +85,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //use routes
-//app.use('/', indexRouter);
+app.use('/', indexRouter);
 app.use('/', surveysRouter);
 //app.use('/', authRouter);
 
